@@ -1,0 +1,68 @@
+openapi: 3.0.1
+info:
+  title: IP Info API
+  description: API to retrieve information about an IP address.
+  version: "1.0.0"
+paths:
+  /ip-info:
+    get:
+      summary: Get IP Information
+      description: retrieves details about a given IP address, including country code and ISP.
+      parameters:
+        - in: query
+          name: ip
+          required: true
+          schema:
+            type: string
+          description: The IP address to retrieve information about.
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_info'
+              example:
+                ip: "8.8.8.8"
+                country_code: "US"
+                internet_service_provider: "Google LLC"
+        "400":
+          description: Invalid IP address provided
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: "Invalid IP address format"
+        "500":
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: "Internal server error"
+components:
+  schemas:
+    API_info:
+      type: object
+      properties:
+        ip:
+          type: string
+          description: The IP address.
+        country_code:
+          type: string
+          description: The two-letter country code.
+        internet_service_provider:
+          type: string
+          description: Name of the internet service provider.
+      required:
+        - ip
+        - country_code
+        - internet_service_provider

@@ -1,0 +1,45 @@
+services:
+  db:
+    image: docker.arvancloud.ir/postgres:17.2-alpine3.21
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+    env_file:
+      - ../configs/db
+    restart: "always"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "mmd", "-d", "bemula"]    
+      interval: 10s
+      retries: 5
+      start_period: 5s
+      timeout: 10s    
+  ipidentifier:
+    image: ipidentifier
+    env_file:
+      - ../configs/db
+    build:
+      context: ../
+      dockerfile: build/Dockerfile.httpserver
+    depends_on:
+      db_migrate:
+        condition: service_completed_successfully
+    ports:
+      - 3000:3000
+    restart: "always"
+  db_migrate:
+    image: db_migrate
+    env_file:
+      - ../configs/db
+    build:
+      context: ../
+      dockerfile: build/Dockerfile.migrate
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+volumes:
+  db:
+# health check needs to be added to the services
+#inster new data gives error should be fixed
