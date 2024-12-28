@@ -1,9 +1,9 @@
 package api
 
 import (
+	internal "IpIdentifier/internal/api"
 	"encoding/json"
 	"log"
-	internal "mmd/internal/api"
 	"net/http"
 )
 

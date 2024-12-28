@@ -1,4 +1,4 @@
-module mmd
+module IpIdentifier
 
 go 1.23.2
 

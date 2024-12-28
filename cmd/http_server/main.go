@@ -1,7 +1,7 @@
 package main
 
 import (
-	internal "mmd/internal/http"
+	internal "IpIdentifier/internal/http"
 )
 
 func main() {

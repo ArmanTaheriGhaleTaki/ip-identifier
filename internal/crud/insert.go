@@ -1,10 +1,10 @@
 package crud
 
 import (
+	ip_struct "IpIdentifier/internal/ip"
 	"errors"
 	"fmt"
 	"log"
-	ip_struct "mmd/internal/ip"
 	"os"
 
 	"gorm.io/driver/postgres"

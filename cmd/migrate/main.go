@@ -1,7 +1,7 @@
 package main
 
 import (
-	database "mmd/internal/crud"
+	database "IpIdentifier/internal/crud"
 )
 
 func main() {

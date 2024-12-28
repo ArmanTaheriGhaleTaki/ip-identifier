@@ -1,11 +1,11 @@
 package api
 
 import (
+	"IpIdentifier/internal/crud"
+	ip_struct "IpIdentifier/internal/ip"
 	"encoding/json"
 	"io"
 	"log"
-	"mmd/internal/crud"
-	ip_struct "mmd/internal/ip"
 	"net/http"
 )
 
