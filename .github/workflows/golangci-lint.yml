@@ -1,4 +1,3 @@
----
 # This action is synced from https://github.com/prometheus/prometheus
 name: golangci-lint
 on:
