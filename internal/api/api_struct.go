@@ -10,15 +10,15 @@ import (
 )
 
 const (
-	ip_query_url string = "http://ip-api.com/json/"
+	IPQEURYURL string = "http://ip-api.com/json/"
 )
 
-func IP_info_gather_info(ip string) ip_struct.IP_info {
-	var result ip_struct.IP_info
+func IpInfoGatherInfo(ip string) ip_struct.IpInfo {
+	var result ip_struct.IpInfo
 	result.Ip = ip
-	crud.Database_retrieve(&result)
+	crud.DatabaseRetrieve(&result)
 	if result.Country == "" {
-		url := ip_query_url + ip
+		url := IPQEURYURL + ip
 		log.Printf("lookup by the remote api: %v", ip)
 		resp, err := http.Get(url)
 		if err != nil {
@@ -33,7 +33,7 @@ func IP_info_gather_info(ip string) ip_struct.IP_info {
 		if err != nil {
 			log.Fatalf("failed to unmarshal response body: %v", err)
 		}
-		crud.Database_insert(&result)
+		crud.DatabaseInsert(&result)
 		result.Ip = ip
 	}
 	return result

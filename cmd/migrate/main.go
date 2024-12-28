@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	db_conn := database.Postgre_connect()
-	database.Database_migrate(db_conn)
+	dbConn := database.PostgreConnect()
+	database.DatabaseMigrate(dbConn)
 }
