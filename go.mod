@@ -6,6 +6,18 @@ require (
 	github.com/stretchr/testify v1.8.1
 	gorm.io/driver/postgres v1.5.11
 	gorm.io/gorm v1.25.12
+	go.opentelemetry.io/otel
+	go.opentelemetry.io/otel/exporters/stdout/stdoutmetric
+	go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+	go.opentelemetry.io/otel/exporters/stdout/stdoutlog
+	go.opentelemetry.io/otel/sdk/log
+	go.opentelemetry.io/otel/log/global
+	go.opentelemetry.io/otel/propagation
+	go.opentelemetry.io/otel/sdk/metric
+	go.opentelemetry.io/otel/sdk/resource
+	go.opentelemetry.io/otel/sdk/trace
+	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+	go.opentelemetry.io/contrib/bridges/otelslog
 )
 
 require (
